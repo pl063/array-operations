@@ -4,9 +4,11 @@
 
     int initiate_menu();
     int take_input();
+    int display_array(int *arr, int size);
 
     int main() {
         int key_to_continue;
+
         initiate_menu();
 
         cin>>key_to_continue;
@@ -16,6 +18,7 @@
     int initiate_menu() {
 
         int user_choice = 0;
+
 
       //The menu looks like:
         cout<<"Vavedi chislo, otgovarqshto na izbora ti:"<<endl;
@@ -40,7 +43,35 @@
     }
 
     int take_input() {
-        cout<<"Take input";
+        
+        int arr_size = 0;
+        int arr_index = 0;
+    
+        do {
+            cout<<"Vavedi razmernost na masiva"<<endl;
+            cin>>arr_size;
+        } while(arr_size < 0);
+        cout<<"Razmera e "<<arr_size<<endl;
+
+        cout<<"Vavedi stoinosti"<<endl;
+        int input_array[arr_size];
+
+        for(int i = 0; i < arr_size; i++){
+            int current_value;
+            cout<<"M(N)["<<arr_index<<"] = ";
+            cin>>current_value;
+            input_array[arr_index++] = current_value;
+            cin.clear();
+            cin.ignore();
+        }
+        
+        display_array(input_array, arr_size);
         return 0;
     }
 
+    int display_array(int *arr, int size) {
+        for(int i = 0; i < size; i++) {
+            cout<<"Masiva e: "<<arr[i]<<" ";
+        }
+        return 0;
+    }
