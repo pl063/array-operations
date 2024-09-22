@@ -2,76 +2,108 @@
     #include <iostream>
     using namespace std;
 
-    int initiate_menu();
-    int take_input();
-    int display_array(int *arr, int size);
 
-    int main() {
-        int key_to_continue;
+    void take_input (int* ptr, int &N); //Взимане на входящи данни от потребителя - размерност и стойности на масива
+    void uneven_elements(int* ptr, int &N); //Нов масив от нечетните стойности и намиране на средноаритемтичната им стойност
+    void sort_array(int* ptr, int &N); //Записване на копие на вх. масив и сортиране по низходящ ред
+    void display_array(int* arr, int size); //Визуализиране на текущия масив
 
-        initiate_menu();
+        int main() {
+        const int size = 25;
+        int user_choice, N;
+        int M[size];
 
-        cin>>key_to_continue;
-        return 0;
-    }
-
-    int initiate_menu() {
-
-        int user_choice = 0;
-
+        int* ptr = M;
 
       //The menu looks like:
-        cout<<"Vavedi chislo, otgovarqshto na izbora ti:"<<endl;
-        cout<<"1 - Vavedi nov masiv M(N)"<<endl;
-        cout<<"2 - Formirai masiv MN(N) ot nechetnite elementi na M(N) i izvedi srednoaritmetichnata im stoinost"<<endl;
-        cout<<"3 - Sortirai masiva M(N) v nizhodqsht red"<<endl;
-        cout<<"4 - Izhod ot programata"<<endl;
+       
 
          do {
-           cin>>user_choice;
-            cin.clear();
-            cin.ignore(); //ignore the stream
-        } while (user_choice < 1 || user_choice > 4);
+            cout<<"Vavedi chislo, otgovarqshto na izbora ti:"<<endl;
+            cout<<"1 - Vavedi nov masiv M(N)"<<endl;
+            cout<<"2 - Formirai masiv MN(N) ot nechetnite elementi na M(N) i izvedi srednoaritmetichnata im stoinost"<<endl;
+            cout<<"3 - Sortirai masiva M(N) v nizhodqsht red"<<endl;
+            cout<<"4 - Izhod ot programata"<<endl;
 
-
-         switch(user_choice) {
-            case 1:
-                take_input();
-                break;
-        }
-        return 0;
-    }
-
-    int take_input() {
-        
-        int arr_size = 0;
-        int arr_index = 0;
-    
-        do {
-            cout<<"Vavedi razmernost na masiva"<<endl;
-            cin>>arr_size;
-        } while(arr_size < 0);
-        cout<<"Razmera e "<<arr_size<<endl;
-
-        cout<<"Vavedi stoinosti"<<endl;
-        int input_array[arr_size];
-
-        for(int i = 0; i < arr_size; i++){
-            int current_value;
-            cout<<"M(N)["<<arr_index<<"] = ";
-            cin>>current_value;
-            input_array[arr_index++] = current_value;
+            cin>>user_choice;
             cin.clear();
             cin.ignore();
+
+            switch(user_choice) {
+            case 1:
+                cout<<"Vavedi razmer na masiva"<<endl;
+                take_input(ptr, N);
+                cout<<"Masiva e:"<<endl;
+                display_array(ptr, N);
+                cout<<endl;
+                break;
+            case 2:
+                uneven_elements(ptr, N);
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                cout<<"Izhod"<<endl;
+                break;
+            default:
+                cout<<"Nevalidna opciq"<<endl;
+                break;
         }
-        
-        display_array(input_array, arr_size);
+        } while (user_choice != 4);
+
+
+         
         return 0;
     }
 
-    int display_array(int *arr, int size) {
-        for(int i = 0; i < size; i++) {
-            cout<<"Masiva e: "<<arr[i]<<" ";
+    void take_input(int* ptr, int &N) {
+        int user_choice;
+        do {
+            cin>>user_choice;
+            N = user_choice;
+        } while(N < 0 && N > 25);
+
+        for(int i = 0; i < N; i++) {
+            cout<<"M["<<i<<"] = ";
+            cin>>user_choice;
+            cin.clear();
+            cin.ignore();
+            ptr[i] = user_choice;
         }
-        return 0;
+    }
+
+    void uneven_elements(int* ptr, int &N) {
+        int sum = 0;
+        int average;
+        int uneven_arr[N];
+        int uneven_index = 0;
+
+        for (int i = 0; i < N; i++) {
+            if(ptr[i] % 2 != 0) {
+                sum += ptr[i];
+                uneven_arr[uneven_index++] = ptr[i];
+            }
+        }
+
+        int* uneven_ptr = uneven_arr;
+
+        average = sum / (uneven_index);
+
+        cout<<"Srednoaritmetichnoto e = "<<average<<endl;
+        cout<<"Masiva ot nechetni chisla e "<<endl;
+        display_array(uneven_ptr, uneven_index);
+        cout<<endl;
+    }
+
+    void sort_array(int* ptr, int &N) {
+     
+        
+    }
+
+    void display_array(int* arr, int size) {
+        for(int i = 0; i < size; i++) {
+            cout<<arr[i]<<" ";
+        }
+        
     }
