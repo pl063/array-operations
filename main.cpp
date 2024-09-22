@@ -74,8 +74,8 @@
     }
 
     void uneven_elements(int* ptr, int &N) {
-        int sum = 0;
-        int average;
+        double sum = 0.0;
+        double average;
         int uneven_arr[N];
         int uneven_index = 0;
 
