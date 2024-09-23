@@ -15,8 +15,8 @@
 
         int* ptr = M;
 
-      //The menu looks like:
-       
+        bool entered_array = false;
+
 
          do {
             cout<<"Vavedi chislo, otgovarqshto na izbora ti:"<<endl;
@@ -31,17 +31,16 @@
 
             switch(user_choice) {
             case 1:
-                cout<<"Vavedi razmer na masiva"<<endl;
                 take_input(ptr, N);
-                cout<<"Masiva e:"<<endl;
-                display_array(ptr, N);
-                cout<<endl;
+                entered_array = true;
                 break;
             case 2:
-                uneven_elements(ptr, N);
+                if (entered_array) uneven_elements(ptr, N);
+                else cout<<"Purvo vavedi masiv!"<<endl;
                 break;
             case 3:
-                sort_array(ptr, N);
+                if (entered_array) sort_array(ptr, N);
+                else cout<<"Purvo vavedi masiv!"<<endl;
                 break;
             case 4:
                 cout<<"Izhod"<<endl;
@@ -52,17 +51,19 @@
         }
         } while (user_choice != 4);
 
-
-         
         return 0;
     }
 
     void take_input(int* ptr, int &N) {
         int user_choice;
         do {
+            cout<<"Vavedi razmer na masiva ot 1 do 25"<<endl;
             cin>>user_choice;
-            N = user_choice;
-        } while(N <= 0 && N > 25);
+            cin.clear();
+            cin.ignore();
+        } while(user_choice <= 0 || user_choice > 25);
+
+        N = user_choice;
 
         for(int i = 0; i < N; i++) {
             cout<<"M["<<i<<"] = ";
@@ -71,6 +72,9 @@
             cin.ignore();
             ptr[i] = user_choice;
         }
+        cout<<"Masiva e:"<<endl;       
+        display_array(ptr, N);
+        cout<<endl;
     }
 
     void uneven_elements(int* ptr, int &N) {
