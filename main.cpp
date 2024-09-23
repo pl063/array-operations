@@ -41,7 +41,7 @@
                 uneven_elements(ptr, N);
                 break;
             case 3:
-                
+                sort_array(ptr, N);
                 break;
             case 4:
                 cout<<"Izhod"<<endl;
@@ -62,7 +62,7 @@
         do {
             cin>>user_choice;
             N = user_choice;
-        } while(N < 0 && N > 25);
+        } while(N <= 0 && N > 25);
 
         for(int i = 0; i < N; i++) {
             cout<<"M["<<i<<"] = ";
@@ -97,13 +97,44 @@
     }
 
     void sort_array(int* ptr, int &N) {
-     
+        int MS[N] = {0};
+
+        int i, j;
+        bool swapped;
+
+        //Презаписване на масива
+        for(int k = 0; k < N; k++) {
+            MS[k] = ptr[k];
+        }
+
+        //Сортиране на масива
+        for (i = 0; i < N - 1; i++) {
+            swapped = false;
+         
+            for (j = 0; j < N - i - 1; j++) {
+                int current = MS[j];
+                int adjacent = MS[j + 1];
+                if (current < adjacent) {
+                    int temp = current;
+                    MS[j] = adjacent;
+                    MS[j + 1] = temp;
+                   
+                    swapped = true;
+                }
+            }
+            
+            if (swapped == false)
+                break;
+        }
         
+        int* ms_p = MS;
+        cout<<"Sortiraniq masiv e "<<endl;
+        display_array(ms_p, N);
+        cout<<endl;
     }
 
     void display_array(int* arr, int size) {
         for(int i = 0; i < size; i++) {
             cout<<arr[i]<<" ";
         }
-        
     }
