@@ -29,14 +29,17 @@
 
             switch(user_choice) {
             case 1:
+                system("cls");
                 take_input(M, N);
                 entered_array = true;
                 break;
             case 2:
+                system("cls");  
                 if (entered_array) uneven_elements(M, N);
                 else cout<<"Purvo vavedi masiv!"<<endl;
                 break;
             case 3:
+                system("cls");
                 if (entered_array) sort_array(M, N);
                 else cout<<"Purvo vavedi masiv!"<<endl;
                 break;
@@ -87,11 +90,22 @@
             }
         }
 
+<<<<<<< Updated upstream
         average = sum / uneven_index;
 
         cout<<"Srednoaritmetichnoto e = "<<average<<endl;
         cout<<"Masiva ot nechetni chisla e "<<endl;
         display_array(uneven_arr, uneven_index);
+=======
+        if(sum != 0) {
+            average = sum / (uneven_index);
+            cout<<"Srednoaritmetichnoto e = "<<average<<endl;
+            cout<<"Masiva ot nechetni chisla e "<<endl;
+            display_array(uneven_arr, uneven_index);
+        } else {
+            cout<<"Nqma nechetni chisla v masiva!";
+        }
+>>>>>>> Stashed changes
         cout<<endl;
     }
 
