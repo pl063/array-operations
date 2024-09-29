@@ -87,7 +87,7 @@
             }
         }
 
-        average = sum / (uneven_index);
+        average = sum / uneven_index;
 
         cout<<"Srednoaritmetichnoto e = "<<average<<endl;
         cout<<"Masiva ot nechetni chisla e "<<endl;
