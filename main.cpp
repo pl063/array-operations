@@ -90,13 +90,6 @@
             }
         }
 
-<<<<<<< Updated upstream
-        average = sum / uneven_index;
-
-        cout<<"Srednoaritmetichnoto e = "<<average<<endl;
-        cout<<"Masiva ot nechetni chisla e "<<endl;
-        display_array(uneven_arr, uneven_index);
-=======
         if(sum != 0) {
             average = sum / (uneven_index);
             cout<<"Srednoaritmetichnoto e = "<<average<<endl;
@@ -105,7 +98,6 @@
         } else {
             cout<<"Nqma nechetni chisla v masiva!";
         }
->>>>>>> Stashed changes
         cout<<endl;
     }
 
